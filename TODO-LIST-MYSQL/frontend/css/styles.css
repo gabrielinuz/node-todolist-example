@@ -1,0 +1,22 @@
+/* Estilo para las tareas completadas */
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  background-color: #f1f1f1;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+}
+
+button.w3-red {
+  background-color: #f44336;
+  color: white;
+}
+
+button.w3-blue {
+  background-color: #2196F3;
+  color: white;
+}
