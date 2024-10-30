@@ -3,91 +3,162 @@ const todoForm = document.getElementById('todoForm');
 const taskInput = document.getElementById('taskInput');
 const todoList = document.getElementById('todoList');
 
-//Explicación de las modificaciones:
-//Backend (todoRoutes.js):
+// Cambiar URL de la API en las peticiones fetch en un solo lugar
+const apiURL = 'http://localhost:3000/api';
 
-//DELETE /todos/:id: Esta ruta elimina una tarea de la base de datos según su ID.
-//PUT /todos/activate/:id: Esta ruta permite volver a poner una tarea en estado activo, cambiando el valor de completed a false.
-//Frontend (app.js):
+// Función para mostrar las tareas en la lista
+function displayTodos(todos) 
+{
+    // Limpiamos la lista de tareas antes de agregar las nuevas
+    todoList.innerHTML = '';
 
-//Para cada tarea, agregamos dos botones:
-//Eliminar: Un botón rojo que, al hacer clic, envía una solicitud DELETE al backend y elimina la tarea.
-//Completar/Activar: Dependiendo del estado de la tarea (si está completada o no), este botón mostrará "Completar" o "Activar", y cambiará el estado de la tarea de false a true (o viceversa).
-//El botón de completar marcará la tarea como completada y aplicará el estilo tachado, mientras que el de activar quitará el estilo tachado.
+    // Recorremos las tareas y las mostramos en la lista
+    todos.forEach(todo => {
+        const listItem = document.createElement('li');
+        listItem.textContent = todo.task;
+
+        // Agregamos clase "completed" si la tarea está completada
+        if (todo.completed) {
+            listItem.classList.add('completed');
+        }
+
+        // Agregamos los botones completar/activar y para eliminar
+        listItem.appendChild(createToggleButton(todo, listItem));
+        listItem.appendChild(createDeleteButton(todo._id));
+
+        // Agregamos la tarea a la lista
+        todoList.appendChild(listItem);
+    });
+}
+
 // Función para obtener y mostrar las tareas
-async function getTodos() {
-  const response = await fetch('http://localhost:3000/api/todos');
-  const todos = await response.json();
+async function getTodos() 
+{
+    try 
+    {
+        //const response = await fetch('http://localhost:3000/api/todos'); //usando la url completa
+        //const response = await fetch(apiURL + '/todos'); //concatenando (mala práctica)
+        //usando template literals (ver documentación)
+        const response = await fetch(`${apiURL}/todos`);
+        if (!response.ok) throw new Error('Error al obtener las tareas');
 
-  // Limpiamos la lista de tareas antes de agregar las nuevas
-  todoList.innerHTML = '';
+        const todos = await response.json();
+        displayTodos(todos);
+    } 
+    catch (error) 
+    {
+        console.error("Error al obtener las tareas desde el servidor:", error);
+    }
+}
 
-  // Recorremos las tareas y las mostramos en la lista
-  todos.forEach(todo => {
-    const listItem = document.createElement('li');
-    listItem.textContent = todo.task;
+// Función para crear el botón de completar/activar
+function createToggleButton(todo, listItem) 
+{
+    const toggleButton = document.createElement('button');
+    toggleButton.classList.add('w3-button', 'w3-blue', 'w3-margin-left');
 
-    // Botón para eliminar la tarea
+    // Si la tarea está completada, aplicamos el estilo de "completado" y mostramos "Activar"
+    //Al hacer PUT en tu frontend, es una buena práctica enviar un JSON en el cuerpo de la 
+    //solicitud para hacer las modificaciones claras.
+    if (todo.completed) 
+    {
+        listItem.classList.add('completed');
+        toggleButton.textContent = 'Activar';
+        toggleButton.addEventListener('click', async () => 
+        {
+            try 
+            {
+                //await fetch(`http://localhost:3000/api/todos/activate/${todo._id}`, 
+                await fetch(`${apiURL}/todos/activate/${todo._id}`, 
+                {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json',},
+                    body: JSON.stringify({ completed: true }) // Activar
+                });
+                getTodos();
+            } 
+            catch (error) 
+            {
+                console.error("Error al activar la tarea:", error);
+            }
+        });
+    } 
+    else 
+    {
+        toggleButton.textContent = 'Completar';
+        toggleButton.addEventListener('click', async () => 
+        {
+            try 
+            {
+                //await fetch(`http://localhost:3000/api/todos/${todo._id}`, 
+                await fetch(`${apiURL}/todos/${todo._id}`, 
+                {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json',},
+                    body: JSON.stringify({ completed: false }) // Completar la tarea
+                });
+                getTodos(); // Recargamos las tareas
+            } 
+            catch (error) 
+            {
+                console.error("Error al completar la tarea:", error);
+            }
+        });
+    }
+
+    return toggleButton;
+}
+
+// Función para crear el botón de eliminar
+function createDeleteButton(id) 
+{
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Eliminar';
     deleteButton.classList.add('w3-button', 'w3-red', 'w3-margin-left');
-    deleteButton.addEventListener('click', async () => {
-      await fetch(`http://localhost:3000/api/todos/${todo._id}`, {
-        method: 'DELETE',
-      });
-      getTodos(); // Recargamos las tareas
+
+    deleteButton.addEventListener('click', async () => 
+    {
+        try 
+        {
+            //await fetch(`http://localhost:3000/api/todos/${id}`, {method: 'DELETE',});
+            await fetch(`${apiURL}/todos/${id}`, {method: 'DELETE',});
+            getTodos(); // Recargamos las tareas
+        } 
+        catch (error) 
+        {
+            console.error("Error al eliminar la tarea:", error);
+        }
     });
 
-    // Botón para cambiar el estado de la tarea
-    const toggleButton = document.createElement('button');
-    toggleButton.classList.add('w3-button', 'w3-blue', 'w3-margin-left');
-    
-    // Si la tarea está completada, aplicamos el estilo de "completado" y mostramos "Activar"
-    if (todo.completed) {
-      listItem.classList.add('completed');
-      toggleButton.textContent = 'Activar';
-      toggleButton.addEventListener('click', async () => {
-        await fetch(`http://localhost:3000/api/todos/activate/${todo._id}`, {
-          method: 'PUT',
-        });
-        getTodos(); // Recargamos las tareas
-      });
-    } else {
-      toggleButton.textContent = 'Completar';
-      toggleButton.addEventListener('click', async () => {
-        await fetch(`http://localhost:3000/api/todos/${todo._id}`, {
-          method: 'PUT',
-        });
-        getTodos(); // Recargamos las tareas
-      });
-    }
-
-    // Agregamos los botones a la tarea
-    listItem.appendChild(toggleButton);
-    listItem.appendChild(deleteButton);
-
-    // Agregamos la tarea a la lista
-    todoList.appendChild(listItem);
-  });
+    return deleteButton;
 }
 
-// Evento para agregar una nueva tarea
-todoForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+// Evento para agregar una nueva tarea al enviar el input del formulario
+todoForm.addEventListener('submit', async (e) => 
+{
+    e.preventDefault();
 
-  const task = taskInput.value;
-  
-  await fetch('http://localhost:3000/api/todos', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ task })
-  });
+    const task = taskInput.value.trim();
+    if (!task) return; // Evitar agregar tareas vacías
 
-  taskInput.value = ''; // Limpiamos el campo de entrada
-  getTodos(); // Recargamos la lista de tareas
+    try 
+    {
+        //await fetch('http://localhost:3000/api/todos', 
+        await fetch(`${apiURL}/todos`, 
+        {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify({ task }),
+        });
+        
+        taskInput.value = ''; // Limpiamos el campo de entrada
+        getTodos(); // Recargamos la lista de tareas
+    } 
+    catch (error) 
+    {
+        console.error("Error al agregar la tarea:", error);
+    }
 });
 
-// Inicializamos la lista de tareas al cargar la página
+//Ejecutar función obtener todos al cargar la página:
 getTodos();

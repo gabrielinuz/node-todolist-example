@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Importamos módulos necesarios
 const express = require('express');
 const mongoose = require('mongoose');

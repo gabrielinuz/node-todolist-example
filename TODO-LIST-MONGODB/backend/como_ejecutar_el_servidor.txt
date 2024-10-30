@@ -1,0 +1,12 @@
+##primero levantar el motor de base de datos mongo DB (como root)
+service mongod start
+
+##Opción 1:
+./server.js
+
+##Opción 2:
+node server.js
+
+##Opción 3 (instalando nodemon: npm install -g nodemon)
+##https://www.npmjs.com/package/nodemon
+nodemon ./server.js
