@@ -1,0 +1,33 @@
+La sintaxis ${todo.id} que ves en el código del frontDispatcher.js es parte de algo llamado template literals o literal de plantilla en JavaScript, que permite crear cadenas de texto de una manera flexible, integrando variables y expresiones directamente en la cadena.
+
+Aquí tienes una explicación detallada:
+
+1. Uso de las comillas invertidas (`):
+Las comillas invertidas se utilizan para definir una template literal. A diferencia de las comillas simples (') o dobles ("), las comillas invertidas permiten incluir expresiones dentro de la cadena con la sintaxis ${expresión}.
+
+Si intentas usar ${todo.id} en una cadena que no esté entre comillas invertidas (por ejemplo, 'http://localhost:3000/api/todos/activate/${todo.id}'), JavaScript no lo interpretará correctamente y lo tratará como texto literal. Las comillas invertidas indican que debe procesarse la cadena y evaluar cualquier expresión dentro de ${}.
+
+2. Sintaxis de ${todo.id}:
+Dentro de una template literal, la sintaxis ${} te permite incluir variables o expresiones JavaScript directamente en la cadena. Esto significa que ${todo.id} insertará el valor de todo.id en esa posición en lugar de simplemente el texto ${todo.id}.
+
+Por ejemplo:
+    let todo = { id: 123 };
+    console.log(`http://localhost:3000/api/todos/activate/${todo.id}`);
+
+Aquí, todo.id es 123, por lo que el resultado de la cadena será:
+    http://localhost:3000/api/todos/activate/123
+
+
+¿Por qué es útil?
+
+Las template literals hacen que sea más fácil construir cadenas complejas que incluyen variables o expresiones. Sin esta sintaxis, tendrías que construir la cadena manualmente, lo cual sería menos legible y más propenso a errores:
+
+    // Sin template literals
+    let url = 'http://localhost:3000/api/todos/activate/' + todo.id;
+
+Con template literals, el código es más legible y conciso.
+
+Resumen:
+Las comillas invertidas permiten que JavaScript interprete variables o expresiones dentro de ${} en una cadena.
+${todo.id} evalúa todo.id y coloca su valor en la cadena.
+Las template literals son una forma concisa y clara de crear cadenas con variables.

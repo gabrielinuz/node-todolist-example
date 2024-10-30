@@ -1,0 +1,3 @@
+No usar innerHTMl, en su lugar  utilizar las funciones de creación de elementos y adición DOM (¡lo sé! es más pesado y más código, pero más seguro).
+
+https://es.stackoverflow.com/questions/213321/es-peligroso-usar-innerhtml-en-javascript-qu%C3%A9-otra-alternativa-tengo
