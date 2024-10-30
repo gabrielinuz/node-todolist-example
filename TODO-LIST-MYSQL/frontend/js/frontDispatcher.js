@@ -38,7 +38,7 @@ async function getTodos()
     {
         //const response = await fetch('http://localhost:3000/api/todos'); //usando la url completa
         //const response = await fetch(apiURL + '/todos'); //concatenando (mala práctica)
-        //ver documentación sobre template literals
+        //usando template literals (ver documentación)
         const response = await fetch(`${apiURL}/todos`);
         if (!response.ok) throw new Error('Error al obtener las tareas');
 
@@ -159,3 +159,6 @@ todoForm.addEventListener('submit', async (e) =>
         console.error("Error al agregar la tarea:", error);
     }
 });
+
+//Ejecutar función obtener todos al cargar la página:
+getTodos();

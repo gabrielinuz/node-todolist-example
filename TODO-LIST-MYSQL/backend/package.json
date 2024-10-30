@@ -1,7 +1,8 @@
 {
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.1",
-    "mysql2": "^3.11.3"
-  }
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.21.1",
+        "mysql2": "^3.11.3",
+        "nodemon": "^3.1.7"
+    }
 }
