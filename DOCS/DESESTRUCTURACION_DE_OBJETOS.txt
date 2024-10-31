@@ -1,0 +1,29 @@
+En esta línea:
+
+    const { createTodosTable } = require('./models/todo');
+
+no se está realizando un "parseo" ni asignando ningún tipo en particular. La sintaxis simplemente extrae la función o propiedad llamada createTodosTable del módulo que se encuentra en ./models/todo.
+
+Explicación en detalle
+Sin desestructuración: Cuando importas un módulo completo, generalmente escribes algo como:
+
+    const todoModule = require('./models/todo');
+
+
+Luego, para acceder a createTodosTable, usarías:
+
+    todoModule.createTodosTable();
+
+Con desestructuración: La desestructuración te permite extraer directamente createTodosTable sin tener que hacer referencia al módulo completo cada vez.
+
+Al escribir:
+
+    const { createTodosTable } = require('./models/todo');
+
+estás diciendo "importa solo la propiedad createTodosTable del objeto exportado por todo.js y guárdala en una variable llamada createTodosTable". Después de esta línea, puedes usar createTodosTable directamente:
+
+    createTodosTable();
+
+
+¿Cuándo usarlo?
+La desestructuración es útil para simplificar el código y evitar importar todo un módulo cuando solo necesitas una o algunas propiedades o funciones específicas. Además, hace que el código sea más legible y evita tener nombres redundantes.

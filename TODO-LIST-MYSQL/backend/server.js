@@ -5,7 +5,7 @@ const express = require('express');
 const mysql = require('mysql2/promise'); // Usamos mysql2 para soporte de Promises
 const cors = require('cors');
 const todoRoutes = require('./routes/todoRoutes');
-const { createTodosTable } = require('./models/todo'); // Importamos la función para crear la tabla todos si no existiera
+const { createTodosTable } = require('./models/todo'); // Importamos solo la función para crear la tabla todos si no existiera
 
 // Inicializamos la aplicación de Express
 const app = express();
