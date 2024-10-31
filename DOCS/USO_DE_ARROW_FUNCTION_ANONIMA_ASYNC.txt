@@ -1,0 +1,51 @@
+Por ejemplo en esta función del script server.js
+
+(async () => {
+    try {
+        await createTodosTable(db);
+        console.log('OK: Tabla "todos" creada o ya existente.');
+    } catch (err) {
+        console.error('Error al crear la tabla todos:', err);
+    }
+})();
+
+este bloque usa una función autoejecutable asíncrona con sintaxis de arrow function.
+
+Explicación de cada parte
+
+1- Definición de la función autoejecutable:
+        (async () => { ... })();
+
+    Aquí estamos creando una función anónima que se ejecuta inmediatamente después de ser definida. La sintaxis se divide en dos partes:
+
+    -(async () => { ... }): define una función arrow asíncrona sin nombre (async permite el uso de await dentro de ella).
+    
+    -();: llama a la función inmediatamente después de declararla, por eso se le llama Immediately Invoked Function Expression (IIFE).
+    
+2-Uso de async y await:
+
+    -La palabra clave async convierte la función en una función asíncrona, permitiendo el uso de await dentro de ella.
+    
+    -await createTodosTable(db); se usa para pausar la ejecución de esta función hasta que createTodosTable(db) complete su ejecución. Esta línea intenta crear la tabla todos en la base de datos db.
+    
+3-Bloques try...catch:
+
+    -try...catch captura cualquier error que pueda ocurrir durante la ejecución de createTodosTable(db).
+    
+    -Si todo sale bien, se imprime OK: Tabla "todos" creada o ya existente.
+    
+    -Si ocurre un error, el bloque catch lo captura y muestra el mensaje: Error al crear la tabla todos: seguido del error.
+    
+¿Por qué usar esta sintaxis en server.js?
+
+    Este enfoque permite ejecutar un bloque asíncrono que configure algo necesario antes de que el servidor comience a aceptar solicitudes, como crear una tabla si no existe. Esto es útil cuando necesitas que ciertos elementos estén listos al iniciar el servidor, y puedes estar seguro de que cualquier fallo en esta preparación se mostrará inmediatamente.
+
+Resumen de los beneficios de esta sintaxis
+    
+    -Modularidad: El código puede ejecutarse sin tener que integrarlo en otra función o archivo.
+    
+    -Concurrencia: await simplifica la ejecución de funciones asincrónicas secuencialmente.
+
+    -Inmediatez: Al ser autoejecutable, realiza la tarea inmediatamente, asegurando que las dependencias estén listas antes de aceptar solicitudes.
+
+Este patrón es muy común para configuración inicial o tareas previas al inicio de aplicaciones que necesitan alguna inicialización asincrónica.
