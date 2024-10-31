@@ -1,0 +1,45 @@
+No siempre es necesario agregar estas líneas en server.js, pero hacerlo tiene ventajas, y la sintaxis tiene una razón específica.
+Nos referimos a estas líneas:
+
+app.use((req, res, next) => {
+    req.db = db;
+    next();
+});
+
+Propósito de app.use con req.db = db;:
+
+Esta línea está añadiendo una propiedad db al objeto req (la petición que llega al servidor).
+De esta manera, req.db contiene la conexión a la base de datos, lo que permite acceder a db en cualquier función o controlador que maneje las rutas, sin tener que importar o configurar db en cada archivo o ruta de tu aplicación.
+Uso de next():
+
+next() es fundamental en el contexto de middleware en Express. Llama a la siguiente función middleware en la pila de ejecución.
+Sin next(), el flujo de la solicitud se detendría, y la aplicación no pasaría a la siguiente función de middleware o controlador de ruta.
+En este caso, el middleware está diseñado para agregar req.db y luego permitir que la solicitud continúe hacia el siguiente middleware o ruta configurada.
+
+¿Es necesaria esta línea?
+No es estrictamente necesaria, pero es muy útil y conveniente si tu aplicación maneja varias rutas y todas necesitan acceder a la base de datos. Alternativamente, podrías importar db en cada archivo de ruta o controlador que lo necesite, pero esto haría el código menos modular y más repetitivo.
+
+¿Es esto una sobreescritura de constructor?
+No, no estamos sobreescribiendo ningún constructor. En su lugar, estamos utilizando el concepto de middleware en Express, que permite modificar req y res antes de que lleguen al controlador final. La asignación req.db = db; es simplemente una modificación del objeto req.
+
+Ejemplo de uso en una ruta
+Aquí está cómo podrías usar req.db en una de tus rutas, gracias a la configuración en el middleware:
+
+// En todoRoutes.js
+router.get('/todos', async (req, res) => {
+    try {
+        const [rows] = await req.db.query('SELECT * FROM todos');
+        res.json(rows);
+    } catch (error) {
+        res.status(500).send('Error al obtener las tareas');
+    }
+});
+
+En este caso, req.db permite que la conexión a la base de datos esté disponible sin importar db directamente en todoRoutes.js.
+
+Ventajas de esta práctica
+Modularidad: Permite acceder a db en todas las rutas de manera uniforme sin reimportarlo.
+Claridad y simplicidad: Hace que el código en las rutas sea más limpio y entendible.
+Flexibilidad: Si en algún momento decides cambiar db, solo necesitas actualizarlo en el middleware en vez de en cada archivo.
+Esta estructura modular y el uso de next() permiten que Express maneje cada middleware y controlador de manera secuencial, facilitando el desarrollo de aplicaciones escalables y bien estructuradas.
+
