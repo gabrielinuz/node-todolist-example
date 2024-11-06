@@ -28,16 +28,13 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=2
-FILE_NAME_0=0;Javascript;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MYSQL%2Fbackend%2Fserver.js;0;4
-FILE_NAME_1=1277;None;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FDOCS%2FDESESTRUCTURACION_DE_OBJETOS.txt;0;4
-FILE_NAME_2=1635;None;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FDOCS%2FUSO_DE_ARROW_FUNCTION_ANONIMA_ASYNC.txt;0;4
+current_page=-1
 
 [VTE]
-last_dir=/var/www/html/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/DOCS
+last_dir=/var/www/html/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MYSQL/frontend/js
 
 [prjorg]
-expanded_paths=/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MYSQL/backend;
+expanded_paths=/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MYSQL/backend/controllers;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MYSQL/backend/models;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MYSQL/backend/routes;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MYSQL/frontend/js;
 source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;*.m;
 header_patterns=*.h;*.H;*.hpp;*.hxx;*.h++;*.hh;
 ignored_dirs_patterns=.*;CVS;

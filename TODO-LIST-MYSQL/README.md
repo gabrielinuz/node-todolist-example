@@ -15,8 +15,8 @@ https://nodejs.org/en/download/package-manage
 npm init -y
 npm install express cors mysql2
 
-##MONGO SERVER UP, AS ROOT USER:
-service mongod start
+##MYSQL SERVER UP, AS ROOT USER:
+service mysql start
 
 ##SERVER UP
 node server.js

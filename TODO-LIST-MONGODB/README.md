@@ -21,16 +21,7 @@ service mongod start
 ##SERVER UP
 node server.js
 
-Me gustaría que me facilites un código en inglés, comentado línea por línea en español y con resultados en pantalla en español: un todolist, donde puedan crearse notas, marcarlas como concluídas y que se vean desactivadas desde el estilo. Las tecnologías involucradas son node, express, mongodb y mongoose (para guardar las notas) para backend. Para frontend, quiero usar código vainilla pero con el estilo CSS de la W3Schools, Fetch API y lo más modular y prolijo separado en directorios backend y frontend, con archivos separados tanto en la vista como en el backend y con las rutas separadas en el backend para mayor modularidad y extensibilidad a futuro.
-
-Comentarios línea por línea en español:
-Backend (Node, Express, MongoDB, Mongoose):
-
-todo.js: define el esquema de la tarea con los campos task y completed.
-todoRoutes.js: maneja las rutas para crear, obtener y marcar tareas como completadas.
-app.js: inicializa el servidor Express, conecta a MongoDB, y configura las rutas.
-Frontend (vanilla JS, Fetch API):
-
-index.html: formulario para agregar tareas y lista donde se mostrarán.
-styles.css: estilo para marcar las tareas completadas con línea tachada y fondo gris.
-app.js: maneja el envío del formulario, obtiene las tareas del backend y actualiza la lista visual.
+//Para cada tarea, agregamos dos botones:
+//Eliminar: Un botón rojo que, al hacer clic, envía una solicitud DELETE al backend y elimina la tarea.
+//Completar/Activar: Dependiendo del estado de la tarea (si está completada o no), este botón mostrará "Completar" o "Activar", y cambiará el estado de la tarea de false a true (o viceversa).
+//El botón de completar marcará la tarea como completada y aplicará el estilo tachado, mientras que el de activar quitará el estilo tachado.

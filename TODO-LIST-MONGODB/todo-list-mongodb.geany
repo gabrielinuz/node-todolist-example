@@ -20,21 +20,26 @@ indent_mode=2
 [project]
 name=TODO-LIST-MONGODB
 base_path=/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB
+description=
 
 [long line marker]
 long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
-FILE_NAME_0=0;Markdown;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MONGODB%2FREADME.md;0;4
-FILE_NAME_1=277;Javascript;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MONGODB%2Fbackend%2Fserver.js;0;4
+current_page=5
+FILE_NAME_0=0;HTML;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MYSQL%2Ffrontend%2Findex.html;0;4
+FILE_NAME_1=1161;Javascript;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MYSQL%2Ffrontend%2Fjs%2FfrontDispatcher.js;0;4
+FILE_NAME_2=964;Javascript;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MYSQL%2Fbackend%2Fserver.js;0;4
+FILE_NAME_3=793;Javascript;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MONGODB%2Fbackend%2Fserver.js;0;4
+FILE_NAME_4=0;Javascript;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FDocumentos%2FHTTP%2F00-EXAMPLES-CODE%2F00-NODE-EXAMPLES%2Fnode-todolist-example%2FTODO-LIST-MYSQL%2Fbackend%2Fmodels%2Ftodo.js;0;4
+FILE_NAME_5=0;None;0;EUTF-8;0;1;1;%2Fhome%2Fgabriel%2FAudiodisc%2F00-GNGF-MUSIC%2FINEFABLE%2FAUDRA%2FAudra.txt;0;4
 
 [VTE]
-last_dir=/var/www/html/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/backend
+last_dir=/home/gabriel/Audiodisc/00-GNGF-MUSIC/INEFABLE/AUDRA
 
 [prjorg]
-expanded_paths=/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/backend;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/frontend/css;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/frontend/js;
+expanded_paths=/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/backend/controllers;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/backend/models;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/frontend/css;/home/gabriel/Documentos/HTTP/00-EXAMPLES-CODE/00-NODE-EXAMPLES/node-todolist-example/TODO-LIST-MONGODB/frontend/js;
 source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;*.m;
 header_patterns=*.h;*.H;*.hpp;*.hxx;*.h++;*.hh;
 ignored_dirs_patterns=.*;CVS;
